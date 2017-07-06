@@ -11,10 +11,28 @@ const todoList = [
     }
 ];
 
+const specialList = [
+    {
+        'id': 1,
+        "owner": "Kirsten"
+    },
+    {
+        'id': 2,
+        "owner": "tran"
+    }
+];
+
 const server = new Hapi.Server();
 server.connection({ port: 8080 });
 
 server.route([
+    {
+        method: 'GET',
+        path: '/special',
+        handler: function(request, reply) {
+            reply(specialList).code(200);
+        }
+    },
     {
         method: 'GET',
         path: '/',
